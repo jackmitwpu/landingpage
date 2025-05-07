@@ -70,10 +70,10 @@ function App() {
 
         {/* Right: Contact Icons */}
         <div className="contact-icons">
-          <a href="https://api.whatsapp.com/send?phone=" target="_blank" rel="noopener noreferrer">
+          <a href="https://api.whatsapp.com/send?phone=7066670405" target="_blank" rel="noopener noreferrer">
             <FaWhatsapp />
           </a>
-          <a href="tel:02071177142" target="_blank" rel="noopener noreferrer">
+          <a href="tel:7066670405" target="_blank" rel="noopener noreferrer">
             <FaPhone />
           </a>
           <a href="mailto:admissions@mitmumbai.com" target="_blank" rel="noopener noreferrer">
