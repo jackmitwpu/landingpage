@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef }from 'react';
 import './App.css';
 import logo from './assets/logo.png';
 import collegepic from './assets/college.jpg';
@@ -7,6 +7,7 @@ import aiml from "./assets/ai_ml.jpg";
 import it from "./assets/it.jpg";
 import et from "./assets/et.jpg";
 import compscience from "./assets/comp_science.jpg";
+import emailjs from "emailjs-com";
 import {
   FaFacebookF,
   FaXTwitter,
@@ -19,6 +20,29 @@ import {
 import Counter from "./Counter";
 function App() {
 
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_f9m3lwq", // 🔁 Replace with your EmailJS Service ID
+        "template_x7725jm", // 🔁 Replace with your EmailJS Template ID
+        form.current,
+        "tTYTcXGIhVuzVeOkp" // 🔁 Replace with your EmailJS Public Key
+      )
+      .then(
+        (result) => {
+          alert("✅ Enquiry submitted successfully!");
+          form.current.reset();
+        },
+        (error) => {
+          alert("❌ Something went wrong. Please try again.");
+          console.log(error.text);
+        }
+      );
+  };
   return (
     <>
     <header className="header">
@@ -52,7 +76,7 @@ function App() {
           <a href="tel:02071177142" target="_blank" rel="noopener noreferrer">
             <FaPhone />
           </a>
-          <a href="mailto:admissions@mitwpu.edu.in" target="_blank" rel="noopener noreferrer">
+          <a href="mailto:admissions@mitmumbai.com" target="_blank" rel="noopener noreferrer">
             <FaEnvelope />
           </a>
                   {/* Social icons next to logo */}
@@ -81,27 +105,63 @@ function App() {
         </div>
         <div className="enquiry-form">
           <h2>Enquiry Form</h2>
-          <form>
-            <label>Full Name</label>
-            <input type="text" placeholder="Enter your name" />
+          <form ref={form} onSubmit={sendEmail}>
+            <label>Name</label>
+            <input
+                          type="text"
+                          className="form-control"
+                          id="name"
+                          name="name"
+                          required
+                        />
 
-            <label>Email Address</label>
-            <input type="email" placeholder="Enter your email" />
+            <label>Email </label>
+            <input
+                          type="email"
+                          className="form-control"
+                          id="email"
+                          name="email"
+                          required
+                        />
 
             <label>Mobile Number</label>
-            <input type="tel" placeholder="Enter your mobile number" />
+            <input
+                          type="tel"
+                          className="form-control"
+                          id="phone"
+                          name="phone"
+                          required
+                        />
 
-            <label>Interested Course</label>
-            <select>
-              <option>Select a course</option>
-              <option>Computer Science AI/ML</option>
-              <option>Computer Science Engineering</option>
-              <option>Information Technology</option>
-              <option>Electronic Engineering</option>
-            </select>
+            <label>Course</label>
+            <select
+                          className="form-select"
+                          id="course"
+                          name="course"
+                          required
+                        >
+                          <option value="">Select a course</option>
+                          <option value="Computer Science and Engineering - AI & ML">
+                            Computer Science and Engineering - AI & ML
+                          </option>
+                          <option value="Computer Science Engineering">
+                            Computer Science Engineering
+                          </option>
+                          <option value="Information Technology">
+                            Information Technology
+                          </option>
+                          <option value="Electronics Engineering">
+                            Electronics Engineering
+                          </option>
+                        </select>
 
             <label>Message</label>
-            <textarea placeholder="Write your message here"></textarea>
+            <textarea
+                          className="form-control"
+                          id="message"
+                          name="message"
+                          rows="3"
+                        ></textarea>
 
             <button type="submit">Submit Enquiry</button>
           </form>
