@@ -94,9 +94,10 @@ function App() {
             <label>Interested Course</label>
             <select>
               <option>Select a course</option>
-              <option>B.Tech</option>
-              <option>MBA</option>
-              <option>PhD</option>
+              <option>Computer Science AI/ML</option>
+              <option>Computer Science Engineering</option>
+              <option>Information Technology</option>
+              <option>Electronic Engineering</option>
             </select>
 
             <label>Message</label>
