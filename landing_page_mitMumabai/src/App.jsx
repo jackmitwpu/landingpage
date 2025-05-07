@@ -161,7 +161,7 @@ function App() {
             <div className="card-body">
               <h5 className="card-title">Computer Science And Engineering</h5>
               <p className="card-text">
-                Master big data analytics and predictive modeling.
+              Gain proficiency in computer networks, cybersecurity, and system integration to create robust and scalable engineering solutions.
               </p>
              
             </div>
